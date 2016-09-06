@@ -1,5 +1,5 @@
 final class HitableList: Hitable {
-  let list: [Hitable]
+  private let list: [Hitable]
 
   init(list: [Hitable]) {
     self.list = list

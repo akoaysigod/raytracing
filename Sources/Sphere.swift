@@ -1,8 +1,8 @@
 import Darwin
 
 final class Sphere: Hitable {
-  let center: Vector
-  let radius: Double
+  private let center: Vector
+  private let radius: Double
 
   init(center: Vector = Vector(), radius: Double = 0.0) {
     self.center = center

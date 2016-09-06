@@ -1,6 +1,6 @@
 final class Ray {
-  let a: Vector
-  let b: Vector
+  private let a: Vector
+  private let b: Vector
 
   var origin: Vector {
     return a

@@ -42,8 +42,11 @@ final class Vector {
     return Vector(
         x: x / length,
         y: y / length,
-        z: z / length
-             )
+        z: z / length)
+  }
+
+  var color: Color {
+    return Color(r: Int(x), g: Int(y), b: Int(z))
   }
 
   init(x: Double = 0.0, y: Double = 0.0, z: Double = 0.0) {
@@ -60,7 +63,6 @@ final class Vector {
     return Vector(
         x: self.y * vec.z - self.z * vec.y,
         y: -(self.x * vec.z - self.z * vec.x),
-        z: self.x * vec.y - self.y * vec.x
-             )
+        z: self.x * vec.y - self.y * vec.x)
   }
 }

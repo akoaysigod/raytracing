@@ -1,8 +1,8 @@
 final class Camera {
-  let lowerLeftCorner: Vector
-  let horizontal: Vector
-  let vertical: Vector
-  let origin: Vector
+  private let lowerLeftCorner: Vector
+  private let horizontal: Vector
+  private let vertical: Vector
+  private let origin: Vector
 
   init(lowerLeftCorner: Vector = Vector(x: -2, y: -1, z: -1),
        horizontal: Vector = Vector(x: 4, y: 0, z: 0),
