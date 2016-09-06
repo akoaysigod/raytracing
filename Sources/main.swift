@@ -17,8 +17,8 @@ func colors(nx: Int, ny: Int, ns: Int) -> [(r: Int, g: Int, b: Int)] {
   let camera = Camera()
 
   var ret: [(r: Int, g: Int, b: Int)] = []
-  stride(from: ny, to: 0, by: -1).forEach { j in
-    (0..<nx).forEach { i in
+  for j in stride(from: ny, to: 0, by: -1) {
+    for i in (0..<nx) {
       var vector = (0..<ns).reduce(Vector()) { (vector, _) -> Vector in
         let u = (Double(i) + drand48()) / Double(nx)
         let v = (Double(j) + drand48()) / Double(ny)
