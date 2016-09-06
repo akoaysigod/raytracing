@@ -1,7 +1,5 @@
 import Foundation
 
-let path = "/Users/tony/tmp/RayTracingWeekend/test.ppm"
-
 let nx = 200 //width
 let ny = 100 //height
 let ns = 100 //anti aliasing
@@ -14,14 +12,14 @@ func main() {
   let world = HitableList(list: [sph1, sph2, sph3, sph4])
   let camera = Camera()
 
-  let colorFunc = ColorDeterminer(world: world, camera: camera).diffuseColor
+  let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
   let colors = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
 
   let header = "P3\n\(nx) \(ny)\n255\n"
   let write = colors.reduce(header) { (ret, rgb) -> String in
     ret + "\(rgb.r) \(rgb.g) \(rgb.b)\n"
   }
-  try! write.write(toFile: path, atomically: true, encoding: .utf8)
+  print(write)
 }
 
 main()

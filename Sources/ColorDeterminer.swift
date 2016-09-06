@@ -1,6 +1,6 @@
 import Darwin
 
-typealias ColorFunc = (Ray, HitableList) -> Vector
+typealias ColorFunc = (Ray, HitableList, Int) -> Vector
 
 final class ColorDeterminer {
   private let world: HitableList
@@ -18,7 +18,7 @@ final class ColorDeterminer {
 }
 //normal colors
 extension ColorDeterminer {
-  func normalColor(ray: Ray, world: HitableList) -> Vector {
+  func normalColor(ray: Ray, world: HitableList, depth: Int = 0) -> Vector {
     if let record = world.hit(ray: ray) {
       return 0.5 * Vector(1.0 + record.normal.x, 1.0 + record.normal.y, 1.0 + record.normal.z)
     }
@@ -28,7 +28,7 @@ extension ColorDeterminer {
 
 //diffuse chapter 7
 extension ColorDeterminer {
-  func diffuseColor(ray: Ray, world: HitableList) -> Vector {
+  func diffuseColor(ray: Ray, world: HitableList, depth: Int = 0) -> Vector {
     if let record = world.hit(ray: ray) {
       let t = record.p + record.normal + record.material.randomInUnitSphere()
       return 0.5 * diffuseColor(ray: Ray(a: record.p, b: t - record.p), world: world)
@@ -46,6 +46,6 @@ extension ColorDeterminer {
       }
       return Vector()
     }
-    return background(direction: ray.direction.unit.y)
+    return self.background(direction: ray.direction.unit.y)
   }
 }

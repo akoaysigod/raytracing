@@ -5,7 +5,7 @@ final class HitableList: Hitable {
     self.list = list
   }
 
-  func hit(ray: Ray, tMin: Double = 0.0, tMax: Double = Double.infinity) -> HitRecord? {
+  func hit(ray: Ray, tMin: Double = 0.001, tMax: Double = Double.infinity) -> HitRecord? {
     var retRecord: HitRecord?
     var closest = tMax
 

@@ -47,7 +47,7 @@ struct ColorIterator: IteratorProtocol {
       let u = (Double(i) + drand48()) / Double(imageGenerator.nx)
       let v = (Double(j) + drand48()) / Double(imageGenerator.ny)
       let ray = imageGenerator.camera.getRay(u: u, v: v)
-      return vector + imageGenerator.colorFunc(ray, imageGenerator.world)
+      return vector + imageGenerator.colorFunc(ray, imageGenerator.world, 0)
     }
 
     let avg = vector / Double(imageGenerator.ns)

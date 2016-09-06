@@ -1,2 +1,2 @@
 #!/bin/bash
-./.build/release/RayTracingWeekend
+./.build/release/RayTracingWeekend > ../../test.ppm
