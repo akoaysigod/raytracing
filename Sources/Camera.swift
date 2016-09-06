@@ -4,9 +4,9 @@ final class Camera {
   private let vertical: Vector
   private let origin: Vector
 
-  init(lowerLeftCorner: Vector = Vector(x: -2, y: -1, z: -1),
-       horizontal: Vector = Vector(x: 4, y: 0, z: 0),
-       vertical: Vector = Vector(x: 0, y: 2, z: 0),
+  init(lowerLeftCorner: Vector = Vector(-2, -1, -1),
+       horizontal: Vector = Vector(4, 0, 0),
+       vertical: Vector = Vector(0, 2, 0),
        origin: Vector = Vector()) {
     self.lowerLeftCorner = lowerLeftCorner
     self.horizontal = horizontal

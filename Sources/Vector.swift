@@ -1,27 +1,27 @@
 import Darwin
 
 func +(lhs: Vector, rhs: Vector) -> Vector {
-  return Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y, z: lhs.z + rhs.z)
+  return Vector(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
 }
 
 func -(lhs: Vector, rhs: Vector) -> Vector {
-  return Vector(x: lhs.x - rhs.x, y: lhs.y - rhs.y, z: lhs.z - rhs.z)
+  return Vector(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
 }
 
 func *(lhs: Vector, rhs: Vector) -> Vector {
-  return Vector(x: lhs.x * rhs.x, y: lhs.y * rhs.y, z: lhs.z * rhs.z)
+  return Vector(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z)
 }
 
 func *(lhs: Double, rhs: Vector) -> Vector {
-  return Vector(x: lhs * rhs.x, y: lhs * rhs.y, z: lhs * rhs.z)
+  return Vector(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z)
 }
 
 func /(lhs: Vector, rhs: Vector) -> Vector {
-  return Vector(x: lhs.x / rhs.x, y: lhs.y / rhs.y, z: lhs.z / rhs.z)
+  return Vector(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z)
 }
 
 func /(lhs: Vector, rhs: Double) -> Vector {
-  return Vector(x: lhs.x / rhs, y: lhs.y / rhs, z: lhs.z / rhs)
+  return Vector(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs)
 }
 
 final class Vector {
@@ -39,20 +39,22 @@ final class Vector {
   }
 
   var unit: Vector {
-    return Vector(
-        x: x / length,
-        y: y / length,
-        z: z / length)
+    return Vector(x / length, y / length, z / length)
   }
 
   var color: Color {
     return Color(r: Int(x), g: Int(y), b: Int(z))
   }
 
-  init(x: Double = 0.0, y: Double = 0.0, z: Double = 0.0) {
+  init(_ x: Double = 0.0, _ y: Double = 0.0, _ z: Double = 0.0) {
     self.x = x
     self.y = y
     self.z = z
+  }
+
+  convenience init(array: [Double]) {
+    assert(array.count >= 3, "Requires an array of at least size 3")
+    self.init(array[0], array[1], array[2])
   }
 
   func dot(_ vec: Vector) -> Double {
@@ -61,8 +63,8 @@ final class Vector {
 
   func cross(_ vec: Vector) -> Vector {
     return Vector(
-        x: self.y * vec.z - self.z * vec.y,
-        y: -(self.x * vec.z - self.z * vec.x),
-        z: self.x * vec.y - self.y * vec.x)
+        self.y * vec.z - self.z * vec.y,
+        -(self.x * vec.z - self.z * vec.x),
+        self.x * vec.y - self.y * vec.x)
   }
 }

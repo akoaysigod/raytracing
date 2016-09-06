@@ -3,16 +3,18 @@ import Darwin
 final class Sphere: Hitable {
   private let center: Vector
   private let radius: Double
+  private let material: Material
 
-  init(center: Vector = Vector(), radius: Double = 0.0) {
+  init(center: Vector = Vector(), radius: Double = 0.0, material: Material) {
     self.center = center
     self.radius = radius
+    self.material = material
   }
 
   private func hitRecord(_ t: Double, ray: Ray) -> HitRecord {
     let p = ray.pointAtParameter(t)
     let normal = (p - center) / radius
-    return HitRecord(t: t, p: p, normal: normal)
+    return HitRecord(t: t, p: p, normal: normal, material: material)
   }
 
   func hit(ray: Ray, tMin: Double = 0.0, tMax: Double = Double.infinity) -> HitRecord? {

@@ -43,17 +43,19 @@ struct ColorIterator: IteratorProtocol {
       j -= 1
     }
 
-    var vector = (0..<imageGenerator.ns).reduce(Vector()) { (vector, _) -> Vector in
+    let vector = (0..<imageGenerator.ns).reduce(Vector()) { (vector, _) -> Vector in
       let u = (Double(i) + drand48()) / Double(imageGenerator.nx)
       let v = (Double(j) + drand48()) / Double(imageGenerator.ny)
       let ray = imageGenerator.camera.getRay(u: u, v: v)
       return vector + imageGenerator.colorFunc(ray, imageGenerator.world)
     }
-    vector = vector / Double(imageGenerator.ns)
-    vector = 255.0 * vector
+
+    let avg = vector / Double(imageGenerator.ns)
+    let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
+    let color = 255.0 * gammaCorrection
 
     i += 1
 
-    return vector.color
+    return color.color
   }
 }
