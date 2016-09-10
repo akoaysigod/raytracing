@@ -1,4 +1,4 @@
-import Darwin
+import Foundation
 
 struct Scatter {
   let attenuation: Vector

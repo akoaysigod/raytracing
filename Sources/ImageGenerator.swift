@@ -1,4 +1,4 @@
-import Darwin
+import Foundation
 
 final class ImageGenerator: Sequence {
   fileprivate let nx: Int
@@ -8,7 +8,7 @@ final class ImageGenerator: Sequence {
   fileprivate let camera: Camera
   fileprivate let colorFunc: ColorFunc
 
-  init(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: ColorFunc) {
+  init(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: @escaping ColorFunc) {
     self.nx = nx
     self.ny = ny
     self.ns = ns

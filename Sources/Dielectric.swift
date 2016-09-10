@@ -1,4 +1,4 @@
-import Darwin
+import Foundation
 
 final class Dielectric: Material {
   private let refractiveIndex: Double

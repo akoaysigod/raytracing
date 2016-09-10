@@ -1,4 +1,4 @@
-import Darwin
+import Foundation
 
 func +(lhs: Vector, rhs: Vector) -> Vector {
   return Vector(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
