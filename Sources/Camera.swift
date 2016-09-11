@@ -15,6 +15,7 @@ final class Camera {
   }
 
   func getRay(u: Double, v: Double) -> Ray {
-    return Ray(a: origin, b: lowerLeftCorner + (u * horizontal) + (v * vertical) - origin)
+    return Ray(origin: origin,
+               direction: lowerLeftCorner + (u * horizontal) + (v * vertical) - origin)
   }
 }

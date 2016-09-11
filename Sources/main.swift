@@ -17,9 +17,13 @@ func main() {
   let colors = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
 
   let header = "P3\n\(nx) \(ny)\n255\n"
-  let write = colors.reduce(header) { (ret, rgb) -> String in
-    ret + "\(rgb.r) \(rgb.g) \(rgb.b)\n"
+  print(header)
+  colors.forEach { (rgb) in
+    print("\(rgb.r) \(rgb.g) \(rgb.b)\n")
   }
+//  let write = colors.reduce(header) { (ret, rgb) -> String in
+//    ret + "\(rgb.r) \(rgb.g) \(rgb.b)\n"
+//  }
   print(write)
 }
 

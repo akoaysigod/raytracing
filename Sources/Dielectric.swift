@@ -8,12 +8,9 @@ final class Dielectric: Material {
   }
 
   func scatter(ray: Ray, record: HitRecord) -> Scatter? {
-    let reflected = reflect(v: ray.direction, n: record.normal)
-    let attenuation = Vector(1, 1, 1)
-
     let (outwardNormal, nint, cosine) = { _ -> (Vector, Double, Double) in
       if ray.direction.dot(record.normal) > 0 {
-        let cosine = refractiveIndex * ray.direction.dot(record.normal) / ray.direction.length
+        let cosine = refractiveIndex * (ray.direction.dot(record.normal) / ray.direction.length)
         return (-1 * record.normal, refractiveIndex, cosine)
       }
       let cosine = -ray.direction.dot(record.normal) / ray.direction.length
@@ -21,21 +18,15 @@ final class Dielectric: Material {
     }()
 
     let refracted = refract(v: ray.direction, n: outwardNormal, nint: nint)
-
-    let probability = { _ -> Double in
-      if refracted != nil {
-        return schlick(cosine: cosine, refIdx: refractiveIndex)
-      }
-      return 1.0
-    }()
-
+    let probability = schlick(cosine: cosine, refIdx: refractiveIndex)
     let scattered: Ray = { _ -> Ray in
       if let refracted = refracted, drand48() > probability {
-        return Ray(a: record.p, b: refracted)
+        return Ray(origin: record.p, direction: refracted)
       }
-      return Ray(a: record.p, b: reflected)
+      let reflected = reflect(v: ray.direction, n: record.normal)
+      return Ray(origin: record.p, direction: reflected)
     }()
 
-    return Scatter(attenuation: attenuation, scattered: scattered)
+    return Scatter(attenuation: Vector(1, 1, 1), scattered: scattered)
   }
 }

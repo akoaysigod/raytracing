@@ -31,7 +31,7 @@ extension ColorDeterminer {
   func diffuseColor(ray: Ray, world: HitableList, depth: Int = 0) -> Vector {
     if let record = world.hit(ray: ray) {
       let t = record.p + record.normal + record.material.randomInUnitSphere()
-      return 0.5 * diffuseColor(ray: Ray(a: record.p, b: t - record.p), world: world)
+      return 0.5 * diffuseColor(ray: Ray(origin: record.p, direction: t - record.p), world: world)
     }
     return background(direction: ray.direction.unit.y)
   }

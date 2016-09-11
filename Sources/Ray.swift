@@ -1,21 +1,13 @@
 final class Ray {
-  private let a: Vector
-  private let b: Vector
+  let origin: Vector
+  let direction: Vector
 
-  var origin: Vector {
-    return a
-  }
-
-  var direction: Vector {
-    return b
-  }
-
-  init(a: Vector = Vector(), b: Vector = Vector()) {
-    self.a = a
-    self.b = b
+  init(origin: Vector = Vector(), direction: Vector = Vector()) {
+    self.origin = origin
+    self.direction = direction 
   }
 
   func pointAtParameter(_ t: Double) -> Vector {
-    return a + (t * b)
+    return origin + (t * direction)
   }
 }

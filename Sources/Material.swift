@@ -26,7 +26,7 @@ extension Material {
     let dt = v.unit.dot(n)
     let discrim = 1.0 - nint * nint * (1.0 - dt * dt)
     if discrim > 0.0 {
-      return nint * (v - dt * n) - (sqrt(discrim) * n)
+      return nint * (v.unit - dt * n) - (sqrt(discrim) * n)
     }
     return nil
   }

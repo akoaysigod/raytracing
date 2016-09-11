@@ -9,7 +9,7 @@ final class Metal: Material {
 
   func scatter(ray: Ray, record: HitRecord) -> Scatter? {
     let reflected = reflect(v: ray.direction.unit, n: record.normal)
-    let scattered = Ray(a: record.p, b: reflected + fuzz * randomInUnitSphere())
+    let scattered = Ray(origin: record.p, direction: reflected + fuzz * randomInUnitSphere())
 
     if scattered.direction.dot(record.normal) > 0.0 {
       return Scatter(attenuation: albedo, scattered: scattered)

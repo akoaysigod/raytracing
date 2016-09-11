@@ -7,7 +7,7 @@ final class Lambertian: Material {
 
   func scatter(ray: Ray, record: HitRecord) -> Scatter? {
     let target = record.p + record.normal + randomInUnitSphere()
-    let scattered = Ray(a: record.p, b: target - record.p)
+    let scattered = Ray(origin: record.p, direction: target - record.p)
     return Scatter(attenuation: albedo, scattered: scattered)
   }
 }
