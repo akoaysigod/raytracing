@@ -58,7 +58,7 @@ final class Vector {
   }
 
   func dot(_ vec: Vector) -> Double {
-    return zip(vec3, vec.vec3).map { $0.0 * $0.1 }.reduce(0.0, +)
+    return x * vec.x + y * y * vec.y + z * vec.z
   }
 
   func cross(_ vec: Vector) -> Vector {
