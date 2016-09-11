@@ -1,5 +1,7 @@
 import Foundation
+#if os(Linux)
 import simd
+#endif
 
 typealias ColorFunc = (Ray, HitableList, Int) -> Vector
 

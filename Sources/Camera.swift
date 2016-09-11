@@ -1,5 +1,7 @@
 import Foundation
+#if os(Linux)
 import simd
+#endif
 
 final class Camera {
   private let lowerLeftCorner: Vector
@@ -22,7 +24,7 @@ final class Camera {
     let halfHeight = tan(theta / 2.0)
     let halfWidth = aspect * halfHeight
 
-    self.origin = origin 
+    self.origin = origin
     lensRadius = aperture / 2.0
 
     w = (origin - lookAt).unit

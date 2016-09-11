@@ -1,5 +1,7 @@
 import Foundation
+#if os(Linux)
 import simd
+#endif
 
 final class Sphere: Hitable {
   private let center: Vector

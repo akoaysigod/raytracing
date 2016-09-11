@@ -1,5 +1,7 @@
 import Foundation
+#if os(Linux)
 import simd
+#endif
 
 let nx = 1200 //width
 let ny = 800 //height

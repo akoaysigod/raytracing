@@ -1,6 +1,6 @@
 import Foundation
-#if !os(Linux)
-   import simd
+#if os(Linux)
+import simd
 #endif
 
 struct Scatter {
