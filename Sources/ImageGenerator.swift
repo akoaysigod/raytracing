@@ -44,7 +44,6 @@ struct ColorIterator: IteratorProtocol {
     if i >= imageGenerator.nx {
       i = 0
       j -= 1
-      print("\(100 * Double(imageGenerator.ny - j) / Double(imageGenerator.ny)) completed.")
     }
 
     let vector = (0..<imageGenerator.ns).reduce(Vector()) { (vector, _) -> Vector in
