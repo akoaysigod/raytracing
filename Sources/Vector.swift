@@ -25,10 +25,10 @@ func /(lhs: Vector, rhs: Double) -> Vector {
 }
 
 func ==(lhs: Vector, rhs: Vector) -> Bool {
-  return lhs.x == rhs.x && lhs.y == rhs.y && 
+  return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
 
-final class Vector {
+struct Vector {
   let x: Double
   let y: Double
   let z: Double
@@ -38,12 +38,12 @@ final class Vector {
   }
 
   var length: Double {
-    let s = x * x + y * y + z * z
-    return sqrt(s)
+    return sqrt(x * x + y * y + z * z)
   }
 
   var unit: Vector {
-    return Vector(x / length, y / length, z / length)
+    let l = length
+    return Vector(x / l, y / l, z / l)
   }
 
   var color: Color {
@@ -56,7 +56,7 @@ final class Vector {
     self.z = z
   }
 
-  convenience init(array: [Double]) {
+  init(array: [Double]) {
     assert(array.count >= 3, "Requires an array of at least size 3")
     self.init(array[0], array[1], array[2])
   }

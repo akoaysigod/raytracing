@@ -19,12 +19,9 @@ final class Sphere: Hitable {
 
   func hit(ray: Ray, tMin: Double = 0.0, tMax: Double = Double.infinity) -> HitRecord? {
     let oc = ray.origin - center
-    //let a = ray.direction.dot(ray.direction)
-    let aT = ray.direction.length
-    let a = aT * aT
+    let a = ray.direction.dot(ray.direction)
     let b = oc.dot(ray.direction)
-    let cT = oc.direction.length
-    let c = cT * cT - (radius * radius)
+    let c = oc.dot(oc) - (radius * radius)
     let discrim = (b * b) - (a * c)
 
     if discrim > 0.0 {
