@@ -24,6 +24,10 @@ func /(lhs: Vector, rhs: Double) -> Vector {
   return Vector(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs)
 }
 
+func ==(lhs: Vector, rhs: Vector) -> Bool {
+  return lhs.x == rhs.x && lhs.y == rhs.y && 
+}
+
 final class Vector {
   let x: Double
   let y: Double
@@ -34,7 +38,7 @@ final class Vector {
   }
 
   var length: Double {
-    let s = vec3.map { $0 * $0 }.reduce(0.0, +)
+    let s = x * x + y * y + z * z
     return sqrt(s)
   }
 
