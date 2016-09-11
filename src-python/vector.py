@@ -10,7 +10,7 @@ class Vector:
 
     @property
     def unit(self):
-        l = self.length()
+        l = self.lengthp()
         return Vector(
             x = self.x / l,
             y = self.y / l,
@@ -36,17 +36,17 @@ class Vector:
     def __truediv__(self, vec):
         return Vector(self.x / vec.x, self.y / vec.y, self.z / vec.z)
 
-    def dot(self, vec):
+    def dotp(self, vec):
         z = zip(self.vec3, vec.vec3)
         r = (x * y for x, y in z)
         return sum(r)
 
-    def cross(self, vec):
+    def crossp(self, vec):
         return Vector(
             x = self.y * vec.z - self.z * vec.y,
             y = -(self.x * vec.z - self.z * vec.x),
             z = self.x * vec.y - self.y * vec.x
         )
 
-    def length(self):
+    def lengthp(self):
         return sum(x ** 2 for x in self.vec3) ** 0.5

@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 final class Camera {
   private let lowerLeftCorner: Vector
@@ -25,8 +26,8 @@ final class Camera {
     lensRadius = aperture / 2.0
 
     w = (origin - lookAt).unit
-    u = vup.cross(w).unit
-    v = w.cross(u)
+    u = vup.crossp(w).unit
+    v = w.crossp(u)
 
     lowerLeftCorner = origin - halfWidth * focusDistance * u - halfHeight * focusDistance * v - focusDistance * w
 
@@ -36,7 +37,7 @@ final class Camera {
 
   private func randomInUnitDisk() -> Vector {
     let vec = 2.0 * Vector(drand48(), drand48(), 0) - Vector(1, 1, 0)
-    if vec.dot(vec) >= 1.0 {
+    if vec.dotp(vec) >= 1.0 {
       return randomInUnitDisk()
     }
     return vec

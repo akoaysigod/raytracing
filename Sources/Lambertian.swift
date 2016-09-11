@@ -1,3 +1,5 @@
+import simd
+
 final class Lambertian: Material {
   private let albedo: Vector
 

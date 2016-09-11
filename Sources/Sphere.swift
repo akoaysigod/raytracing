@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 final class Sphere: Hitable {
   private let center: Vector
@@ -19,9 +20,9 @@ final class Sphere: Hitable {
 
   func hit(ray: Ray, tMin: Double = 0.0, tMax: Double = Double.infinity) -> HitRecord? {
     let oc = ray.origin - center
-    let a = ray.direction.dot(ray.direction)
-    let b = oc.dot(ray.direction)
-    let c = oc.dot(oc) - (radius * radius)
+    let a = ray.direction.dotp(ray.direction)
+    let b = oc.dotp(ray.direction)
+    let c = oc.dotp(oc) - (radius * radius)
     let discrim = (b * b) - (a * c)
 
     if discrim > 0.0 {

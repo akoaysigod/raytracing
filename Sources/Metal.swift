@@ -1,3 +1,5 @@
+import simd
+
 final class Metal: Material {
   private let albedo: Vector
   private let fuzz: Double
@@ -11,7 +13,7 @@ final class Metal: Material {
     let reflected = reflect(v: ray.direction.unit, n: record.normal)
     let scattered = Ray(origin: record.p, direction: reflected + fuzz * randomInUnitSphere())
 
-    if scattered.direction.dot(record.normal) > 0.0 {
+    if scattered.direction.dotp(record.normal) > 0.0 {
       return Scatter(attenuation: albedo, scattered: scattered)
     }
     return nil

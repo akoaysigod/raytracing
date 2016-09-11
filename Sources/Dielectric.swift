@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 final class Dielectric: Material {
   private let refractiveIndex: Double
@@ -9,11 +10,11 @@ final class Dielectric: Material {
 
   func scatter(ray: Ray, record: HitRecord) -> Scatter? {
     let (outwardNormal, nint, cosine) = { _ -> (Vector, Double, Double) in
-      if ray.direction.dot(record.normal) > 0 {
-        let cosine = refractiveIndex * (ray.direction.dot(record.normal) / ray.direction.length)
+      if ray.direction.dotp(record.normal) > 0 {
+        let cosine = refractiveIndex * (ray.direction.dotp(record.normal) / ray.direction.lengthp)
         return (-1 * record.normal, refractiveIndex, cosine)
       }
-      let cosine = -ray.direction.dot(record.normal) / ray.direction.length
+      let cosine = -ray.direction.dotp(record.normal) / ray.direction.lengthp
       return (record.normal, 1.0 / refractiveIndex, cosine)
     }()
 

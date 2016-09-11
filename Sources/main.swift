@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 let nx = 1200 //width
 let ny = 800 //height
@@ -16,7 +17,7 @@ func generateScene() -> HitableList {
     let randomSpheres = (-11..<11).map { b -> Sphere? in
       let chooseMat = drand48()
       let center = Vector(Double(a) + 0.9 * drand48(), 0.2, Double(b) + 0.9 * drand48())
-      if (center - Vector(4, 0.2, 0)).length > 0.9 {
+      if (center - Vector(4, 0.2, 0)).lengthp > 0.9 {
         if chooseMat < 0.8 {
           return Sphere(center: center, radius: 0.2, material: Lambertian(albedo: Vector(drand48(), drand48(), drand48())))
         }

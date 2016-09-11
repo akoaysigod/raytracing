@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 final class ImageGenerator: Sequence {
   fileprivate let nx: Int
@@ -41,7 +42,7 @@ struct ColorIterator: IteratorProtocol {
     if i >= imageGenerator.nx {
       i = 0
       j -= 1
-      print("\(Double(1200 - j) / Double(imageGenerator.ny)) completed.")
+      print("\(100 * Double(imageGenerator.ny - j) / Double(imageGenerator.ny)) completed.")
     }
 
     let vector = (0..<imageGenerator.ns).reduce(Vector()) { (vector, _) -> Vector in
@@ -52,7 +53,7 @@ struct ColorIterator: IteratorProtocol {
     }
 
     let avg = vector / Double(imageGenerator.ns)
-    let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
+    let gammaCorrection = Vector(avg.vec3.map { sqrt($0) })
     let color = 255.0 * gammaCorrection
 
     i += 1

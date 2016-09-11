@@ -1,3 +1,5 @@
+import simd
+
 final class Ray {
   let origin: Vector
   let direction: Vector

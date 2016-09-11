@@ -1,4 +1,5 @@
 import Foundation
+import simd
 
 struct Scatter {
   let attenuation: Vector
@@ -12,18 +13,18 @@ protocol Material {
 extension Material {
   func randomInUnitSphere() -> Vector {
     let vec = 2.0 * Vector(drand48(), drand48(), drand48()) - Vector(1, 1, 1)
-    if vec.dot(vec) >= 1.0 {
+    if vec.dotp(vec) >= 1.0 {
       return randomInUnitSphere()
     }
     return vec
   }
 
   func reflect(v: Vector, n: Vector) -> Vector {
-    return v - 2 * v.dot(n) * n
+    return v - 2 * v.dotp(n) * n
   }
 
   func refract(v: Vector, n: Vector, nint: Double) -> Vector? {
-    let dt = v.unit.dot(n)
+    let dt = v.unit.dotp(n)
     let discrim = 1.0 - nint * nint * (1.0 - dt * dt)
     if discrim > 0.0 {
       return nint * (v.unit - dt * n) - (sqrt(discrim) * n)

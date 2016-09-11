@@ -14,9 +14,9 @@ def gen_file(nx, ny, ns):
 
 def hit_sphere(center, radius, ray):
     oc = ray.origin - center
-    a = ray.direction.dot(ray.direction)
-    b = 2.0 * oc.dot(ray.direction)
-    c = oc.dot(oc) - radius * radius
+    a = ray.direction.dotp(ray.direction)
+    b = 2.0 * oc.dotp(ray.direction)
+    c = oc.dotp(oc) - radius * radius
     discrim = b * b - 4 * a * c
 
     if discrim < 0:

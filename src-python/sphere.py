@@ -9,9 +9,9 @@ class Sphere(Hitable):
 
     def hit(self, ray, tMin = 0.0, tMax = float("inf")):
         oc = ray.origin - self.center
-        a = ray.direction.dot(ray.direction)
-        b = oc.dot(ray.direction)
-        c = oc.dot(oc) - (self.radius * self.radius)
+        a = ray.direction.dotp(ray.direction)
+        b = oc.dotp(ray.direction)
+        c = oc.dotp(oc) - (self.radius * self.radius)
         discrim = (b * b) - (a * c)
 
         if discrim > 0.0:
