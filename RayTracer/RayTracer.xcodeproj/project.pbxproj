@@ -1,0 +1,319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EAAD5D8B1D85F434001586A7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D7C1D85F434001586A7 /* Camera.swift */; };
+		EAAD5D8C1D85F434001586A7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D7D1D85F434001586A7 /* Color.swift */; };
+		EAAD5D8D1D85F434001586A7 /* ColorDeterminer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D7E1D85F434001586A7 /* ColorDeterminer.swift */; };
+		EAAD5D8E1D85F434001586A7 /* Dielectric.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D7F1D85F434001586A7 /* Dielectric.swift */; };
+		EAAD5D8F1D85F434001586A7 /* Hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D801D85F434001586A7 /* Hitable.swift */; };
+		EAAD5D901D85F434001586A7 /* HitableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D811D85F434001586A7 /* HitableList.swift */; };
+		EAAD5D911D85F434001586A7 /* HitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D821D85F434001586A7 /* HitRecord.swift */; };
+		EAAD5D921D85F434001586A7 /* ImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D831D85F434001586A7 /* ImageGenerator.swift */; };
+		EAAD5D931D85F434001586A7 /* Lambertian.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D841D85F434001586A7 /* Lambertian.swift */; };
+		EAAD5D941D85F434001586A7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D851D85F434001586A7 /* main.swift */; };
+		EAAD5D951D85F434001586A7 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D861D85F434001586A7 /* Material.swift */; };
+		EAAD5D961D85F434001586A7 /* Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D871D85F434001586A7 /* Metal.swift */; };
+		EAAD5D971D85F434001586A7 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D881D85F434001586A7 /* Ray.swift */; };
+		EAAD5D981D85F434001586A7 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D891D85F434001586A7 /* Sphere.swift */; };
+		EAAD5D991D85F434001586A7 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D8A1D85F434001586A7 /* Vector.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAAD5D701D85F420001586A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EAAD5D721D85F420001586A7 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAAD5D7C1D85F434001586A7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Camera.swift; path = ../../Sources/Camera.swift; sourceTree = "<group>"; };
+		EAAD5D7D1D85F434001586A7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../../Sources/Color.swift; sourceTree = "<group>"; };
+		EAAD5D7E1D85F434001586A7 /* ColorDeterminer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorDeterminer.swift; path = ../../Sources/ColorDeterminer.swift; sourceTree = "<group>"; };
+		EAAD5D7F1D85F434001586A7 /* Dielectric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dielectric.swift; path = ../../Sources/Dielectric.swift; sourceTree = "<group>"; };
+		EAAD5D801D85F434001586A7 /* Hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hitable.swift; path = ../../Sources/Hitable.swift; sourceTree = "<group>"; };
+		EAAD5D811D85F434001586A7 /* HitableList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HitableList.swift; path = ../../Sources/HitableList.swift; sourceTree = "<group>"; };
+		EAAD5D821D85F434001586A7 /* HitRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HitRecord.swift; path = ../../Sources/HitRecord.swift; sourceTree = "<group>"; };
+		EAAD5D831D85F434001586A7 /* ImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageGenerator.swift; path = ../../Sources/ImageGenerator.swift; sourceTree = "<group>"; };
+		EAAD5D841D85F434001586A7 /* Lambertian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lambertian.swift; path = ../../Sources/Lambertian.swift; sourceTree = "<group>"; };
+		EAAD5D851D85F434001586A7 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../Sources/main.swift; sourceTree = "<group>"; };
+		EAAD5D861D85F434001586A7 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Material.swift; path = ../../Sources/Material.swift; sourceTree = "<group>"; };
+		EAAD5D871D85F434001586A7 /* Metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Metal.swift; path = ../../Sources/Metal.swift; sourceTree = "<group>"; };
+		EAAD5D881D85F434001586A7 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ray.swift; path = ../../Sources/Ray.swift; sourceTree = "<group>"; };
+		EAAD5D891D85F434001586A7 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sphere.swift; path = ../../Sources/Sphere.swift; sourceTree = "<group>"; };
+		EAAD5D8A1D85F434001586A7 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector.swift; path = ../../Sources/Vector.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAAD5D6F1D85F420001586A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAAD5D691D85F420001586A7 = {
+			isa = PBXGroup;
+			children = (
+				EAAD5D741D85F420001586A7 /* RayTracer */,
+				EAAD5D731D85F420001586A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAAD5D731D85F420001586A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD5D721D85F420001586A7 /* RayTracer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAAD5D741D85F420001586A7 /* RayTracer */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD5D7C1D85F434001586A7 /* Camera.swift */,
+				EAAD5D7D1D85F434001586A7 /* Color.swift */,
+				EAAD5D7E1D85F434001586A7 /* ColorDeterminer.swift */,
+				EAAD5D7F1D85F434001586A7 /* Dielectric.swift */,
+				EAAD5D801D85F434001586A7 /* Hitable.swift */,
+				EAAD5D811D85F434001586A7 /* HitableList.swift */,
+				EAAD5D821D85F434001586A7 /* HitRecord.swift */,
+				EAAD5D831D85F434001586A7 /* ImageGenerator.swift */,
+				EAAD5D841D85F434001586A7 /* Lambertian.swift */,
+				EAAD5D851D85F434001586A7 /* main.swift */,
+				EAAD5D861D85F434001586A7 /* Material.swift */,
+				EAAD5D871D85F434001586A7 /* Metal.swift */,
+				EAAD5D881D85F434001586A7 /* Ray.swift */,
+				EAAD5D891D85F434001586A7 /* Sphere.swift */,
+				EAAD5D8A1D85F434001586A7 /* Vector.swift */,
+			);
+			path = RayTracer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAAD5D711D85F420001586A7 /* RayTracer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAAD5D791D85F420001586A7 /* Build configuration list for PBXNativeTarget "RayTracer" */;
+			buildPhases = (
+				EAAD5D6E1D85F420001586A7 /* Sources */,
+				EAAD5D6F1D85F420001586A7 /* Frameworks */,
+				EAAD5D701D85F420001586A7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RayTracer;
+			productName = RayTracer;
+			productReference = EAAD5D721D85F420001586A7 /* RayTracer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAAD5D6A1D85F420001586A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Anthony Green";
+				TargetAttributes = {
+					EAAD5D711D85F420001586A7 = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EAAD5D6D1D85F420001586A7 /* Build configuration list for PBXProject "RayTracer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EAAD5D691D85F420001586A7;
+			productRefGroup = EAAD5D731D85F420001586A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAAD5D711D85F420001586A7 /* RayTracer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAAD5D6E1D85F420001586A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAAD5D981D85F434001586A7 /* Sphere.swift in Sources */,
+				EAAD5D8B1D85F434001586A7 /* Camera.swift in Sources */,
+				EAAD5D961D85F434001586A7 /* Metal.swift in Sources */,
+				EAAD5D921D85F434001586A7 /* ImageGenerator.swift in Sources */,
+				EAAD5D8D1D85F434001586A7 /* ColorDeterminer.swift in Sources */,
+				EAAD5D8C1D85F434001586A7 /* Color.swift in Sources */,
+				EAAD5D901D85F434001586A7 /* HitableList.swift in Sources */,
+				EAAD5D991D85F434001586A7 /* Vector.swift in Sources */,
+				EAAD5D911D85F434001586A7 /* HitRecord.swift in Sources */,
+				EAAD5D941D85F434001586A7 /* main.swift in Sources */,
+				EAAD5D8E1D85F434001586A7 /* Dielectric.swift in Sources */,
+				EAAD5D951D85F434001586A7 /* Material.swift in Sources */,
+				EAAD5D8F1D85F434001586A7 /* Hitable.swift in Sources */,
+				EAAD5D971D85F434001586A7 /* Ray.swift in Sources */,
+				EAAD5D931D85F434001586A7 /* Lambertian.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EAAD5D771D85F420001586A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EAAD5D781D85F420001586A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EAAD5D7A1D85F420001586A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EAAD5D7B1D85F420001586A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAAD5D6D1D85F420001586A7 /* Build configuration list for PBXProject "RayTracer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAAD5D771D85F420001586A7 /* Debug */,
+				EAAD5D781D85F420001586A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAAD5D791D85F420001586A7 /* Build configuration list for PBXNativeTarget "RayTracer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAAD5D7A1D85F420001586A7 /* Debug */,
+				EAAD5D7B1D85F420001586A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAAD5D6A1D85F420001586A7 /* Project object */;
+}
