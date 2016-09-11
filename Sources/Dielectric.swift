@@ -1,6 +1,8 @@
 import Foundation
 
+#if !os(Linux)
 import simd
+#endif
 
 final class Dielectric: Material {
   private let refractiveIndex: Double

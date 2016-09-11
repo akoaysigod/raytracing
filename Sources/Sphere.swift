@@ -1,5 +1,5 @@
 import Foundation
-#if os(Linux)
+#if !os(Linux)
 import simd
 #endif
 
@@ -28,12 +28,13 @@ final class Sphere: Hitable {
     let discrim = (b * b) - (a * c)
 
     if discrim > 0.0 {
-      let tempOne = (-b - sqrt(b * b - a * c)) / a
+      let sqr = sqrt(discrim)
+      let tempOne = (-b - sqr) / a
       if tempOne < tMax && tempOne > tMin {
         return hitRecord(tempOne, ray: ray)
       }
 
-      let tempTwo = (-b + sqrt(b * b - a * c)) / a
+      let tempTwo = (-b + sqr) / a
       if tempTwo < tMax && tempTwo > tMin {
         return hitRecord(tempTwo, ray: ray)
       }

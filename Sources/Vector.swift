@@ -1,4 +1,4 @@
-#if os(Linux)
+#if !os(Linux)
 import simd
 
 typealias Vector = double3
@@ -38,6 +38,9 @@ func /(lhs: Vector, rhs: Double) -> Vector {
 }
 
 #if os(Linux)
+
+import Foundation
+
 func +(lhs: Vector, rhs: Vector) -> Vector {
   return Vector(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
 }
@@ -58,19 +61,10 @@ func /(lhs: Vector, rhs: Vector) -> Vector {
   return Vector(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z)
 }
 
-
-func ==(lhs: Vector, rhs: Vector) -> Bool {
-  return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
-}
-
 struct Vector {
   let x: Double
   let y: Double
   let z: Double
-
-  var vec3: [Double] {
-    return [x, y, z]
-  }
 
   var lengthp: Double {
     return sqrt(x * x + y * y + z * z)
@@ -88,7 +82,7 @@ struct Vector {
   }
 
   func dotp(_ vec: Vector) -> Double {
-    return x * vec.x + y * y * vec.y + z * vec.z
+    return x * vec.x + y * vec.y + z * vec.z
   }
 
   func crossp(_ vec: Vector) -> Vector {
