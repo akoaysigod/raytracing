@@ -1,5 +1,7 @@
 import Foundation
-import simd
+#if !os(Linux)
+   import simd
+#endif
 
 struct Scatter {
   let attenuation: Vector
