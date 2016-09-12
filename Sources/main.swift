@@ -1,5 +1,5 @@
 import Foundation
-#if os(Linux)
+#if !os(Linux)
 import simd
 #endif
 
@@ -54,8 +54,8 @@ func main() {
   let origin = Vector(13, 2, 3)
   let lookAt = Vector(0, 0, 0)
   let fov = 20.0
-  let distToFocus = 10.0
-  let aperture = 0.1
+  let distToFocus = 20.0
+  let aperture = 0.01
 
   let camera = Camera(origin: origin,
                       lookAt: lookAt,
@@ -66,13 +66,21 @@ func main() {
                       focusDistance: distToFocus)
 
   let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
-  let colors = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
+  //let colors = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
 
   let header = "P3\n\(nx) \(ny)\n255"
-  //print(header)
-  colors.forEach { (rgb) in
-    //print("\(rgb.r) \(rgb.g) \(rgb.b)")
+  print(header)
+  let completion = { (colors: [Color]) in
+    for c in colors {
+      print("\(c.r) \(c.g) \(c.b)")
+    }
   }
+  let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
+  images.test(colorFunc, completion)
+
+//  colors.forEach { (rgb) in
+//    //print("\(rgb.r) \(rgb.g) \(rgb.b)")
+//  }
 //  let write = colors.reduce(header) { (ret, rgb) -> String in
 //    ret + "\(rgb.r) \(rgb.g) \(rgb.b)\n"
 //  }

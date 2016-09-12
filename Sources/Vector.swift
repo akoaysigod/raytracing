@@ -1,4 +1,4 @@
-#if os(Linux)
+#if !os(Linux)
 import simd
 
 typealias Vector = double3

@@ -1,5 +1,5 @@
 import Foundation
-#if os(Linux)
+#if !os(Linux)
 import simd
 #endif
 

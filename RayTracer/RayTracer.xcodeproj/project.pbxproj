@@ -32,7 +32,7 @@
 			dstSubfolderSpec = 0;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentP!ostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -61,7 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentP!ostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -179,7 +179,7 @@
 				EAAD5D971D85F434001586A7 /* Ray.swift in Sources */,
 				EAAD5D931D85F434001586A7 /* Lambertian.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentP!ostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -227,7 +227,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = mac!osx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -268,7 +268,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = mac!osx;
 			};
 			name = Release;
 		};
