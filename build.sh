@@ -1,2 +1,2 @@
 #!/bin/bash
-swift build -c release -Xswiftc -Ounchecked
+swift build -c release 
