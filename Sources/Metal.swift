@@ -2,7 +2,6 @@
 import simd
 #endif
 
-
 final class Metal: Material {
   private let albedo: Vector
   private let fuzz: Double
