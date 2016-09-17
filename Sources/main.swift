@@ -9,9 +9,9 @@ let ns = 10 //anti aliasing
 
 func generateScene() -> HitableList {
   let staticSpheres = [
-    Sphere(center: Vector(0, -1000, 0), radius: 1000, material: Lambertian(albedo: Vector(0.5, 0.5, 0.5))),
+    Sphere(center: Vector(0, -1000, 0), radius: 1000, material: Lambertian(albedo: ConstantTexture(color: Vector(0.5, 0.5, 0.5))),
     Sphere(center: Vector(0, 1, 0), radius: 1, material: Dielectric(refractiveIndex: 1.5)),
-    Sphere(center: Vector(-4, 1, 0), radius: 1, material: Lambertian(albedo: Vector(0.4, 0.2, 0.1))),
+    Sphere(center: Vector(-4, 1, 0), radius: 1, material: Lambertian(albedo: ConstantTexture(color: Vector(0.4, 0.2, 0.1)))),
     Sphere(center: Vector(4, 1, 0), radius: 1, material: Metal(albedo: Vector(0.7, 0.6, 0.5), fuzz: 0.0))
   ]
 
@@ -21,7 +21,7 @@ func generateScene() -> HitableList {
       let center = Vector(Double(a) + 0.9 * drand48(), 0.2, Double(b) + 0.9 * drand48())
       if (center - Vector(4, 0.2, 0)).lengthp > 0.9 {
         if chooseMat < 0.8 {
-          return Sphere(center: center, radius: 0.2, material: Lambertian(albedo: Vector(drand48(), drand48(), drand48())))
+          return Sphere(center: center, radius: 0.2, material: Lambertian(albedo: ConstantTexture(color: Vector(drand48(), drand48(), drand48()))))
         }
         else if chooseMat < 0.95 {
           return Sphere(center: center,

@@ -28,15 +28,15 @@ final class Sphere: Hitable {
     let discrim = (b * b) - (a * c)
 
     if discrim > 0.0 {
-      let sqr = sqrt(b * b - a * c)
-      let tempOne = (-b - sqr) / a
-      if tempOne < tMax && tempOne > tMin {
-        return hitRecord(tempOne, ray: ray)
+      let sqr = sqrt(discrim)
+      let tmpOne = (-b - sqr) / a
+      if tmpOne < tMax && tmpOne > tMin {
+        return hitRecord(tmpOne, ray: ray)
       }
 
-      let tempTwo = (-b + sqr) / a
-      if tempTwo < tMax && tempTwo > tMin {
-        return hitRecord(tempTwo, ray: ray)
+      let tmpTwo = (-b + sqr) / a
+      if tmpTwo < tMax && tmpTwo > tMin {
+        return hitRecord(tmpTwo, ray: ray)
       }
     }
     return nil
