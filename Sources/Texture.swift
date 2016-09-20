@@ -1,3 +1,3 @@
 protocol Texture {
-  func value(s: Double, t: Double, p: Vector) -> Vector
+  func value(_ s: Double, _ t: Double, _ p: Vector) -> Vector
 }

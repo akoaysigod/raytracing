@@ -4,6 +4,8 @@ import simd
 #endif
 
 final class ImageGenerator: Sequence {
+  fileprivate let nPartition: Int
+  fileprivate let tPartition: Int
   fileprivate let nx: Int
   fileprivate let ny: Int
   fileprivate let ns: Int
@@ -11,7 +13,9 @@ final class ImageGenerator: Sequence {
   fileprivate let camera: Camera
   fileprivate let colorFunc: ColorFunc
 
-  init(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: @escaping ColorFunc) {
+  init(nPartition: Int, tPartition: Int, nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: @escaping ColorFunc) {
+    self.nPartition = nPartition
+    self.tPartition = tPartition
     self.nx = nx
     self.ny = ny
     self.ns = ns
@@ -30,16 +34,20 @@ struct ColorIterator: IteratorProtocol {
 
   private var i: Int
   private var j: Int
+  private let end: Int
 
   init(imageGenerator: ImageGenerator) {
     self.imageGenerator = imageGenerator
 
+    let start = imageGenerator.ny / imageGenerator.tPartition
+
     i = 0
-    j = imageGenerator.ny
+    j = imageGenerator.ny - (start * (imageGenerator.nPartition - 1))
+    end = imageGenerator.ny - (start * imageGenerator.nPartition)
   }
 
   mutating func next() -> Color? {
-    guard j > 0 else { return nil }
+    guard j > end else { return nil }
 
     if i >= imageGenerator.nx {
       i = 0
