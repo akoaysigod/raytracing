@@ -22,6 +22,10 @@
 		EAAD5D971D85F434001586A7 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D881D85F434001586A7 /* Ray.swift */; };
 		EAAD5D981D85F434001586A7 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D891D85F434001586A7 /* Sphere.swift */; };
 		EAAD5D991D85F434001586A7 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD5D8A1D85F434001586A7 /* Vector.swift */; };
+		EAFD46701D971B6300D166A0 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD466F1D971B6300D166A0 /* Texture.swift */; };
+		EAFD46721D971B7A00D166A0 /* ConstantTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD46711D971B7A00D166A0 /* ConstantTexture.swift */; };
+		EAFD46741D971B8100D166A0 /* Perlin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD46731D971B8100D166A0 /* Perlin.swift */; };
+		EAFD46761D971B8A00D166A0 /* CheckerTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD46751D971B8A00D166A0 /* CheckerTexture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +57,10 @@
 		EAAD5D881D85F434001586A7 /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ray.swift; path = ../../Sources/Ray.swift; sourceTree = "<group>"; };
 		EAAD5D891D85F434001586A7 /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sphere.swift; path = ../../Sources/Sphere.swift; sourceTree = "<group>"; };
 		EAAD5D8A1D85F434001586A7 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector.swift; path = ../../Sources/Vector.swift; sourceTree = "<group>"; };
+		EAFD466F1D971B6300D166A0 /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Texture.swift; path = ../../Sources/Texture.swift; sourceTree = "<group>"; };
+		EAFD46711D971B7A00D166A0 /* ConstantTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantTexture.swift; path = ../../Sources/ConstantTexture.swift; sourceTree = "<group>"; };
+		EAFD46731D971B8100D166A0 /* Perlin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Perlin.swift; path = ../../Sources/Perlin.swift; sourceTree = "<group>"; };
+		EAFD46751D971B8A00D166A0 /* CheckerTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckerTexture.swift; path = ../../Sources/CheckerTexture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +94,10 @@
 			isa = PBXGroup;
 			children = (
 				EAAD5D7C1D85F434001586A7 /* Camera.swift */,
+				EAFD46751D971B8A00D166A0 /* CheckerTexture.swift */,
 				EAAD5D7D1D85F434001586A7 /* Color.swift */,
 				EAAD5D7E1D85F434001586A7 /* ColorDeterminer.swift */,
+				EAFD46711D971B7A00D166A0 /* ConstantTexture.swift */,
 				EAAD5D7F1D85F434001586A7 /* Dielectric.swift */,
 				EAAD5D801D85F434001586A7 /* Hitable.swift */,
 				EAAD5D811D85F434001586A7 /* HitableList.swift */,
@@ -97,7 +107,9 @@
 				EAAD5D851D85F434001586A7 /* main.swift */,
 				EAAD5D861D85F434001586A7 /* Material.swift */,
 				EAAD5D871D85F434001586A7 /* Metal.swift */,
+				EAFD46731D971B8100D166A0 /* Perlin.swift */,
 				EAAD5D881D85F434001586A7 /* Ray.swift */,
+				EAFD466F1D971B6300D166A0 /* Texture.swift */,
 				EAAD5D891D85F434001586A7 /* Sphere.swift */,
 				EAAD5D8A1D85F434001586A7 /* Vector.swift */,
 			);
@@ -168,14 +180,18 @@
 				EAAD5D961D85F434001586A7 /* Metal.swift in Sources */,
 				EAAD5D921D85F434001586A7 /* ImageGenerator.swift in Sources */,
 				EAAD5D8D1D85F434001586A7 /* ColorDeterminer.swift in Sources */,
+				EAFD46721D971B7A00D166A0 /* ConstantTexture.swift in Sources */,
 				EAAD5D8C1D85F434001586A7 /* Color.swift in Sources */,
 				EAAD5D901D85F434001586A7 /* HitableList.swift in Sources */,
+				EAFD46761D971B8A00D166A0 /* CheckerTexture.swift in Sources */,
 				EAAD5D991D85F434001586A7 /* Vector.swift in Sources */,
 				EAAD5D911D85F434001586A7 /* HitRecord.swift in Sources */,
+				EAFD46701D971B6300D166A0 /* Texture.swift in Sources */,
 				EAAD5D941D85F434001586A7 /* main.swift in Sources */,
 				EAAD5D8E1D85F434001586A7 /* Dielectric.swift in Sources */,
 				EAAD5D951D85F434001586A7 /* Material.swift in Sources */,
 				EAAD5D8F1D85F434001586A7 /* Hitable.swift in Sources */,
+				EAFD46741D971B8100D166A0 /* Perlin.swift in Sources */,
 				EAAD5D971D85F434001586A7 /* Ray.swift in Sources */,
 				EAAD5D931D85F434001586A7 /* Lambertian.swift in Sources */,
 			);
@@ -312,6 +328,7 @@
 				EAAD5D7B1D85F420001586A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

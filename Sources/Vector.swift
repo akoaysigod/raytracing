@@ -19,6 +19,11 @@ extension Vector {
 #endif
 
 extension Vector {
+  init(array: [Double]) {
+    assert(array.count == 3, "Requires an array of size 3")
+    self.init(array[0], array[1], array[2])
+  }
+
   var color: Color {
     return Color(r: Int(x), g: Int(y), b: Int(z))
   }
@@ -74,11 +79,6 @@ struct Vector {
     self.x = x
     self.y = y
     self.z = z
-  }
-
-  init(array: [Double]) {
-    assert(array.count == 3, "Requires an array of size 3")
-    self.init(array[0], array[1], array[2])
   }
 
   func dotp(_ vec: Vector) -> Double {
