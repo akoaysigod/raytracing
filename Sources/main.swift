@@ -40,21 +40,23 @@ func generateScene() -> HitableList {
 }
 
 func main() {
-  if CommandLine.arguments.count != 3 {
-    print("requires partition and totalPartion arguments")
-    return
-  }
-
-  guard let nPartition = Int(CommandLine.arguments[1]),
-        let tPartition = Int(CommandLine.arguments[2]), nPartition > 0, tPartition > 0 else {
-    print("Partition arguments should both be integers greater than 0.")
-    return
-  }
-
-  guard ny % tPartition == 0 else {
-    print("\(ny) % \(tPartition) != 0")
-    return 
-  }
+  let nPartition = 1
+  let tPartition = 1
+//  if CommandLine.arguments.count != 3 {
+//    print("requires partition and totalPartion arguments")
+//    return
+//  }
+//
+//  guard let nPartition = Int(CommandLine.arguments[1]),
+//        let tPartition = Int(CommandLine.arguments[2]), nPartition > 0, tPartition > 0 else {
+//    print("Partition arguments should both be integers greater than 0.")
+//    return
+//  }
+//
+//  guard ny % tPartition == 0 else {
+//    print("\(ny) % \(tPartition) != 0")
+//    return 
+//  }
 
   srand48(Int(time(nil)))
 //  let sph1 = Sphere(center: Vector(0, 0, -1), radius: 0.5, material: Lambertian(albedo: Vector(0.8, 0.3, 0.3)))
