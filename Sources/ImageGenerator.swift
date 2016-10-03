@@ -1,7 +1,10 @@
 import Foundation
 #if !os(Linux)
 import simd
+#else
+import Dispatch
 #endif
+
 
 final class ImageAsync {
   private let nx: Int
@@ -22,7 +25,7 @@ final class ImageAsync {
     colors = Array(repeating: Color(r: 0, g: 0, b: 0), count: nx * ny)
   }
 
-  func test(_ colorFunc: ColorFunc, _ completion: ([Color]) -> ()) {
+  func test(_ colorFunc: @escaping ColorFunc, _ completion: ([Color]) -> ()) {
     let group = DispatchGroup()
     for j in stride(from: ny - 1, to: -1, by: -1) {
       for i in (0..<nx) {
@@ -36,7 +39,7 @@ final class ImageAsync {
           }
 
           let avg = vector / Double(self.ns)
-          let gammaCorrection = Vector(avg.vec3.map { sqrt($0) })
+          let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
           let color = 255.0 * gammaCorrection
 
           self.colors[j * self.nx + i] = color.color
@@ -51,6 +54,8 @@ final class ImageAsync {
 }
 
 final class ImageGenerator: Sequence {
+  fileprivate let nPartition: Int
+  fileprivate let tPartition: Int
   fileprivate let nx: Int
   fileprivate let ny: Int
   fileprivate let ns: Int
@@ -58,7 +63,9 @@ final class ImageGenerator: Sequence {
   fileprivate let camera: Camera
   fileprivate let colorFunc: ColorFunc
 
-  init(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: @escaping ColorFunc) {
+  init(nPartition: Int, tPartition: Int, nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera, colorFunc: @escaping ColorFunc) {
+    self.nPartition = nPartition
+    self.tPartition = tPartition
     self.nx = nx
     self.ny = ny
     self.ns = ns
@@ -77,21 +84,24 @@ struct ColorIterator: IteratorProtocol {
 
   private var i: Int
   private var j: Int
+  private let end: Int
 
   init(imageGenerator: ImageGenerator) {
     self.imageGenerator = imageGenerator
 
+    let start = imageGenerator.ny / imageGenerator.tPartition
+
     i = 0
-    j = imageGenerator.ny
+    j = imageGenerator.ny - (start * (imageGenerator.nPartition - 1))
+    end = imageGenerator.ny - (start * imageGenerator.nPartition)
   }
 
   mutating func next() -> Color? {
-    guard j > 0 else { return nil }
+    guard j > end else { return nil }
 
     if i >= imageGenerator.nx {
       i = 0
       j -= 1
-      print("\(100 * Double(imageGenerator.ny - j) / Double(imageGenerator.ny)) completed.")
     }
 
     let vector = (0..<imageGenerator.ns).reduce(Vector()) { (vector, _) -> Vector in
@@ -102,7 +112,7 @@ struct ColorIterator: IteratorProtocol {
     }
 
     let avg = vector / Double(imageGenerator.ns)
-    let gammaCorrection = Vector(avg.vec3.map { sqrt($0) })
+    let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) } )
     let color = 255.0 * gammaCorrection
 
     i += 1

@@ -1,4 +1,6 @@
+#if !os(Linux)
 import simd
+#endif
 
 final class Metal: Material {
   private let albedo: Vector
