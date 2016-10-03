@@ -40,22 +40,6 @@ func generateScene() -> HitableList {
 }
 
 func main() {
-//  if CommandLine.arguments.count != 3 {
-//    print("requires partition and totalPartion arguments")
-//    return
-//  }
-//
-//  guard let nPartition = Int(CommandLine.arguments[1]),
-//        let tPartition = Int(CommandLine.arguments[2]), nPartition > 0, tPartition > 0 else {
-//    print("Partition arguments should both be integers greater than 0.")
-//    return
-//  }
-//
-//  guard ny % tPartition == 0 else {
-//    print("\(ny) % \(tPartition) != 0")
-//    return 
-//  }
-
   srand48(Int(time(nil)))
 //  let sph1 = Sphere(center: Vector(0, 0, -1), radius: 0.5, material: Lambertian(albedo: Vector(0.8, 0.3, 0.3)))
 //  let sph2 = Sphere(center: Vector(0, -100.5, -1), radius: 100, material: Lambertian(albedo: Vector(0.8, 0.8, 0.0)))
@@ -91,28 +75,13 @@ func main() {
   let header = "P3\n\(nx) \(ny)\n255"
   print(header)
   let completion = { (colors: [Color]) in
-    for c in colors {
+    for c in colors.reversed() {
       print("\(c.r) \(c.g) \(c.b)")
     }
   }
-//
-//  if nPartition == 1 {
-//    let header = "P3\n\(nx) \(ny)\n255"
-//    print(header)
-//  }
-//  colors.forEach { (rgb) in
-//    print("\(rgb.r) \(rgb.g) \(rgb.b)")
-//  }
 
   let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
   images.test(colorFunc, completion)
-
-//  colors.forEach { (rgb) in
-//    //print("\(rgb.r) \(rgb.g) \(rgb.b)")
-//  }
-//  let write = colors.reduce(header) { (ret, rgb) -> String in
-//    ret + "\(rgb.r) \(rgb.g) \(rgb.b)\n"
-//  }
 }
 
 main()
