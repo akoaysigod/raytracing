@@ -7,7 +7,7 @@ let nx = 1200 //width
 let ny = 800 //height
 let ns = 10 //anti aliasing
 
-func generateScene() -> HitableList {
+func generateRandomScene() -> HitableList {
   let even = ConstantTexture(color: Vector(0.2, 0.3, 0.1))
   let odd = ConstantTexture(color: Vector(0.9, 0.9, 0.9))
   let staticSpheres = [
@@ -39,26 +39,28 @@ func generateScene() -> HitableList {
   return HitableList(list: spheres)
 }
 
+func perlinTest() -> HitableList {
+  let texture = NoiseTexture()
+  let sphere1 = Sphere(center: Vector(0, -1000, 0), radius: 1000, material: Lambertian(albedo: texture))
+  let sphere2 = Sphere(center: Vector(0, 2, 0), radius: 2, material: Lambertian(albedo: texture))
+  return HitableList(list: [sphere1, sphere2])
+}
+
 func main() {
-  srand48(Int(time(nil)))
-//  let sph1 = Sphere(center: Vector(0, 0, -1), radius: 0.5, material: Lambertian(albedo: Vector(0.8, 0.3, 0.3)))
-//  let sph2 = Sphere(center: Vector(0, -100.5, -1), radius: 100, material: Lambertian(albedo: Vector(0.8, 0.8, 0.0)))
-//  let sph3 = Sphere(center: Vector(1, 0, -1), radius: 0.5, material: Metal(albedo: Vector(0.8, 0.6, 0.2), fuzz: 0.3))
-//  let sph4 = Sphere(center: Vector(-1, 0, -1), radius: 0.5, material: Dielectric(refractiveIndex: 1.5))
-//  let sph5 = Sphere(center: Vector(-1, 0, -1), radius: -0.45, material: Dielectric(refractiveIndex: 1.5))
-//  let world = HitableList(list: [sph1, sph2, sph3, sph4, sph5])
-  let world = generateScene()
+//  srand48(Int(time(nil)))
 
 //  let r = cos(M_PI / 4.0)
 //  let sph1 = Sphere(center: Vector(-r, 0, -1), radius: r, material: Lambertian(albedo: Vector(0, 0, 1)))
 //  let sph2 = Sphere(center: Vector(r, 0, -1), radius: r, material: Lambertian(albedo: Vector(1, 0, 0)))
 //  let world = HitableList(list: [sph1, sph2])
 
+  let world = perlinTest()
+
   let origin = Vector(13, 2, 3)
   let lookAt = Vector(0, 0, 0)
   let fov = 20.0
-  let distToFocus = 500.0
-  let aperture = 0.001
+  let distToFocus = 10.0
+  let aperture = 0.0
 
   let camera = Camera(origin: origin,
                       lookAt: lookAt,
@@ -69,8 +71,6 @@ func main() {
                       focusDistance: distToFocus)
 
   let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
-  //let colors = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
-  //let colors = ImageGenerator(nPartition: nPartition, tPartition: tPartition, nx: nx, ny: ny, ns: ns, world: world, camera: camera, colorFunc: colorFunc)
 
   let header = "P3\n\(nx) \(ny)\n255"
   print(header)
@@ -81,7 +81,7 @@ func main() {
   }
 
   let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
-  images.test(colorFunc, completion)
+  images.generate(colorFunc, completion)
 }
 
 main()

@@ -11,5 +11,8 @@ clean:
 	rm -rf ./.build
 	swift build --clean
 
+runDebug:
+	lldb ./.build/debug/$(NAME)
+
 run:
-	./.build/debug/$(NAME) >> $(OUTFILE)
+	./.build/debug/$(NAME)

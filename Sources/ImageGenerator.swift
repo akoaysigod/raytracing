@@ -5,7 +5,6 @@ import simd
 import Dispatch
 #endif
 
-
 final class ImageAsync {
   private let nx: Int
   private let ny: Int
@@ -25,9 +24,10 @@ final class ImageAsync {
     colors = Array(repeating: Color(r: 0, g: 0, b: 0), count: nx * ny)
   }
 
-  func test(_ colorFunc: @escaping ColorFunc, _ completion: ([Color]) -> ()) {
+  func generate(_ colorFunc: @escaping ColorFunc, _ completion: ([Color]) -> ()) {
     let group = DispatchGroup()
-    for j in stride(from: ny - 1, to: -1, by: -1) {
+    for j in stride(from: ny - 1, through: 0, by: -1) {
+      print("yay")
       for i in (0..<nx) {
         group.enter()
         queue.async {
@@ -53,6 +53,17 @@ final class ImageAsync {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+//single threaded
 final class ImageGenerator: Sequence {
   fileprivate let nPartition: Int
   fileprivate let tPartition: Int
