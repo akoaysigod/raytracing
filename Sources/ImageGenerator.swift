@@ -27,7 +27,6 @@ final class ImageAsync {
   func generate(_ colorFunc: @escaping ColorFunc, _ completion: ([Color]) -> ()) {
     let group = DispatchGroup()
     for j in stride(from: ny - 1, through: 0, by: -1) {
-      print("yay")
       for i in (0..<nx) {
         group.enter()
         queue.async {

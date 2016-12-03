@@ -54,7 +54,8 @@ func main() {
 //  let sph2 = Sphere(center: Vector(r, 0, -1), radius: r, material: Lambertian(albedo: Vector(1, 0, 0)))
 //  let world = HitableList(list: [sph1, sph2])
 
-  let world = perlinTest()
+  //let world = perlinTest()
+  let world = generateRandomScene()
 
   let origin = Vector(13, 2, 3)
   let lookAt = Vector(0, 0, 0)
@@ -75,7 +76,8 @@ func main() {
   let header = "P3\n\(nx) \(ny)\n255"
   print(header)
   let completion = { (colors: [Color]) in
-    for c in colors.reversed() {
+    for i in stride(from: colors.count - 1, through: 0, by: -1) {
+      let c = colors[i]
       print("\(c.r) \(c.g) \(c.b)")
     }
   }
