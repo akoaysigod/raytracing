@@ -1,6 +1,8 @@
 import Foundation
 #if !os(Linux)
 import simd
+#else
+import Dispatch
 #endif
 
 final class ImageAsync {
@@ -22,9 +24,9 @@ final class ImageAsync {
     colors = Array(repeating: Color(r: 0, g: 0, b: 0), count: nx * ny)
   }
 
-  func test(_ colorFunc: ColorFunc, _ completion: ([Color]) -> ()) {
+  func generate(_ colorFunc: @escaping ColorFunc, _ completion: ([Color]) -> ()) {
     let group = DispatchGroup()
-    for j in stride(from: ny - 1, to: -1, by: -1) {
+    for j in stride(from: ny - 1, through: 0, by: -1) {
       for i in (0..<nx) {
         group.enter()
         queue.async {
@@ -36,7 +38,7 @@ final class ImageAsync {
           }
 
           let avg = vector / Double(self.ns)
-          let gammaCorrection = Vector(avg.vec3.map { sqrt($0) })
+          let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
           let color = 255.0 * gammaCorrection
 
           self.colors[j * self.nx + i] = color.color
@@ -50,6 +52,17 @@ final class ImageAsync {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+//single threaded
 final class ImageGenerator: Sequence {
   fileprivate let nPartition: Int
   fileprivate let tPartition: Int

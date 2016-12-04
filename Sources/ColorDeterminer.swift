@@ -19,6 +19,7 @@ final class ColorDeterminer {
     return (1.0 - t) * Vector(1, 1, 1) + t * Vector(0.5, 0.7, 1.0)
   }
 }
+
 //normal colors
 extension ColorDeterminer {
   func normalColor(ray: Ray, world: HitableList, depth: Int = 0) -> Vector {
@@ -49,6 +50,11 @@ extension ColorDeterminer {
       }
       return Vector()
     }
+//    if let record = world.hit(ray: ray),
+//       let scatter = record.material.scatter(ray: ray, record: record),
+//       depth < 50 {
+//      return scatter.attenuation * materialColor(ray: scatter.scattered, world: world, depth: depth + 1)
+//    }
     return self.background(direction: ray.direction.unit.y)
   }
 }
