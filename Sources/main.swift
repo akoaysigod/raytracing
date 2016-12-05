@@ -3,12 +3,6 @@ import Foundation
 import simd
 #endif
 
-let nx = 200
-let ny = 100
-//let nx = 1200 //width
-//let ny = 800 //height
-let ns = 10 //anti aliasing
-
 func generateRandomScene() -> HitableList {
   let even = ConstantTexture(color: Vector(0.2, 0.3, 0.1))
   let odd = ConstantTexture(color: Vector(0.9, 0.9, 0.9))
@@ -19,27 +13,26 @@ func generateRandomScene() -> HitableList {
     Sphere(center: Vector(4, 1, 0), radius: 1, material: Metal(albedo: Vector(0.7, 0.6, 0.5), fuzz: 0.0))
   ]
 
-//  let spheres = (-11..<11).reduce(staticSpheres) { (spheres, a) -> [Sphere] in
-//    let randomSpheres = (-11..<11).map { b -> Sphere? in
-//      let chooseMat = drand48()
-//      let center = Vector(Double(a) + 0.9 * drand48(), 0.2, Double(b) + 0.9 * drand48())
-//      if (center - Vector(4, 0.2, 0)).lengthp > 0.9 {
-//        if chooseMat < 0.8 {
-//          return Sphere(center: center, radius: 0.2, material: Lambertian(albedo: ConstantTexture(color: Vector(drand48(), drand48(), drand48()))))
-//        }
-//        else if chooseMat < 0.95 {
-//          return Sphere(center: center,
-//                        radius: 0.2,
-//                        material: Metal(albedo: Vector(0.5 * (1 + drand48()), 0.5 * (1 + drand48()), 0.5 * (1 + drand48())), fuzz: 0.5 * drand48()))
-//        }
-//        return Sphere(center: center, radius: 0.2, material: Dielectric(refractiveIndex: 1.5))
-//      }
-//      return nil
-//    }
-//    return spheres + randomSpheres.flatMap { $0 }
-//  }
-//  return HitableList(list: spheres)
-  return HitableList(list: staticSpheres)
+  let spheres = (-11..<11).reduce(staticSpheres) { (spheres, a) -> [Sphere] in
+    let randomSpheres = (-11..<11).map { b -> Sphere? in
+      let chooseMat = drand48()
+      let center = Vector(Double(a) + 0.9 * drand48(), 0.2, Double(b) + 0.9 * drand48())
+      if (center - Vector(4, 0.2, 0)).lengthp > 0.9 {
+        if chooseMat < 0.8 {
+          return Sphere(center: center, radius: 0.2, material: Lambertian(albedo: ConstantTexture(color: Vector(drand48(), drand48(), drand48()))))
+        }
+        else if chooseMat < 0.95 {
+          return Sphere(center: center,
+                        radius: 0.2,
+                        material: Metal(albedo: Vector(0.5 * (1 + drand48()), 0.5 * (1 + drand48()), 0.5 * (1 + drand48())), fuzz: 0.5 * drand48()))
+        }
+        return Sphere(center: center, radius: 0.2, material: Dielectric(refractiveIndex: 1.5))
+      }
+      return nil
+    }
+    return spheres + randomSpheres.flatMap { $0 }
+  }
+  return HitableList(list: spheres)
 }
 
 func checkeredTest() -> HitableList {
@@ -58,7 +51,7 @@ func perlinTest() -> HitableList {
   return HitableList(list: [sphere1, sphere2])
 }
 
-func makeCamera() -> Camera {
+func makeCamera(nx: Int, ny: Int) -> Camera {
   let origin = Vector(13, 2, 3)
   let lookAt = Vector(0, 0, 0)
   let fov = 20.0
@@ -74,16 +67,8 @@ func makeCamera() -> Camera {
                 focusDistance: distToFocus)
 }
 
-func main() {
-//  srand48(Int(time(nil)))
-
-  //let world = perlinTest()
-  //let world = checkeredTest()
-  let world = generateRandomScene()
-  let camera = makeCamera()
-
+func makeImage(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera) {
   let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
-
   let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
   images.generate(colorFunc) { (colors: [Color]) in
     print("P3\n\(nx) \(ny)\n255")
@@ -91,6 +76,21 @@ func main() {
       print("\(c.r) \(c.g) \(c.b)")
     }
   }
+}
+
+func main() {
+//  srand48(Int(time(nil)))
+
+  let nx = 1000 //width
+  let ny = 500 //height
+  let ns = 10 //anti aliasing
+
+  let world = perlinTest()
+  //let world = checkeredTest()
+  //let world = generateRandomScene()
+  let camera = makeCamera(nx: nx, ny: ny)
+
+  makeImage(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
 }
 
 main()

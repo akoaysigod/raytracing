@@ -109,7 +109,7 @@ struct ColorIterator: IteratorProtocol {
     }
 
     let avg = vector / Double(imageGenerator.ns)
-    let gammaCorrection = Vector(avg.vec3.map { sqrt($0) })
+    let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
     let color = 255.0 * gammaCorrection
 
     i += 1
