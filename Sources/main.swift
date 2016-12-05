@@ -69,7 +69,7 @@ func makeCamera(nx: Int, ny: Int) -> Camera {
 
 func makeImage(nx: Int, ny: Int, ns: Int, world: HitableList, camera: Camera) {
   let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
-  let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
+  let images = ImageGenerator(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
   images.generate(colorFunc) { (colors: [Color]) in
     print("P3\n\(nx) \(ny)\n255")
     colors.forEach { c in

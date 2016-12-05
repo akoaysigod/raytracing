@@ -13,14 +13,47 @@ final class Perlin {
     zPerms = Perlin.generatePermutations()
   }
 
+  func trilinearInterpolation(randDoubles: [[[Double]]], u: Double, v: Double, w: Double) -> Double {
+    func hermiteCubic(_ x: Double) -> Double {
+      return x * x * (3 - 2 * x)
+    }
+
+    let uu = hermiteCubic(u)
+    let vv = hermiteCubic(v)
+    let ww = hermiteCubic(w)
+
+    return (0..<2).reduce(0.0) { (ret, i) in
+      return (0..<2).reduce(ret) { (ret1, j) in
+        return (0..<2).reduce(ret1) { (ret2, k) in
+          let a = Double(i) * uu + Double(1 - i) * (1 - uu)
+          let b = Double(j) * vv + Double(1 - j) * (1 - vv)
+          let c = Double(k) * ww + Double(1 - k) * (1 - ww)
+          return ret2 + a * b * c * randDoubles[i][j][k]
+        }
+      }
+    }
+  }
+
   func noise(vec: Vector) -> Double {
+    let i = Int(vec.x)
+    let j = Int(vec.y)
+    let k = Int(vec.z)
+
+    let randDoubles = (0..<2).map { (di) -> [[Double]] in
+      return (0..<2).map { dj in
+        return (0..<2).map { dk in
+          let x = xPerms[(i + di) & 255]
+          let y = yPerms[(j + dj) & 255]
+          let z = zPerms[(k + dk) & 255]
+          return randomDoubles[x ^ y ^ z]
+        }
+      }
+    }
+
     let u = vec.x - floor(vec.x)
     let v = vec.y - floor(vec.y)
-    let z = vec.z - floor(vec.z)
-    let i = Int(4 * vec.x) & 255
-    let j = Int(4 * vec.y) & 255
-    let k = Int(4 * vec.z) & 255
-    return randomDoubles[xPerms[i] ^ yPerms[j] ^ zPerms[k]]
+    let w = vec.z - floor(vec.z)
+    return trilinearInterpolation(randDoubles: randDoubles, u: u, v: v, w: w)
   }
 
   private static func generateRandomDoubles() -> [Double] {
