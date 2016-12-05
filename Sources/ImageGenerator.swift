@@ -36,7 +36,13 @@ final class ImageGenerator {
           }
 
           let avg = vector / Double(self.ns)
-          let gammaCorrection = Vector(array: avg.vec3.map { sqrt($0) })
+          let gammaAvg = avg.vec3.map { x -> Double in
+            if x <= 0.0 {
+              return sqrt(-1.0 * x)
+            }
+            return sqrt(x)
+          }
+          let gammaCorrection = Vector(array: gammaAvg)
           let color = 255.0 * gammaCorrection
           self.colors[(self.ny - j - 1) * self.nx + i] = color.color
         }
