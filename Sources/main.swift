@@ -62,8 +62,8 @@ func makeCamera() -> Camera {
   let origin = Vector(13, 2, 3)
   let lookAt = Vector(0, 0, 0)
   let fov = 20.0
-  let distToFocus = 10.0
-  let aperture = 0.0
+  let distToFocus = 500.0
+  let aperture = 0.001
 
   return Camera(origin: origin,
                 lookAt: lookAt,
@@ -78,22 +78,19 @@ func main() {
 //  srand48(Int(time(nil)))
 
   //let world = perlinTest()
-  let world = checkeredTest()
-  //let world = generateRandomScene()
+  //let world = checkeredTest()
+  let world = generateRandomScene()
   let camera = makeCamera()
 
   let colorFunc = ColorDeterminer(world: world, camera: camera).materialColor
 
-  let header = "P3\n\(nx) \(ny)\n255"
-  print(header)
-  let completion = { (colors: [Color]) in
-    for c in colors.reversed() {
+  let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
+  images.generate(colorFunc) { (colors: [Color]) in
+    print("P3\n\(nx) \(ny)\n255")
+    colors.forEach { c in
       print("\(c.r) \(c.g) \(c.b)")
     }
   }
-
-  let images = ImageAsync(nx: nx, ny: ny, ns: ns, world: world, camera: camera)
-  images.generate(colorFunc, completion)
 }
 
 main()

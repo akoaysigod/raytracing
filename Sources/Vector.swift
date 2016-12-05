@@ -18,6 +18,10 @@ extension Vector {
 }
 #endif
 
+func ==(lhs: Vector, rhs: Vector) -> Bool {
+  return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+}
+
 extension Vector {
   init(array: [Double]) {
     assert(array.count == 3, "Requires an array of size 3")
